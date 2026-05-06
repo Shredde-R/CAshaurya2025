@@ -1,0 +1,98 @@
+.card {
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.glowOrb {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: -60px;
+  right: -60px;
+  filter: blur(60px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.glow_safe   { background: var(--safe); }
+.glow_medium { background: var(--medium); }
+.glow_severe { background: var(--severe); }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.levelRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.level {
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.level.safe   { color: var(--safe); }
+.level.medium { color: var(--medium); }
+.level.severe { color: var(--severe); }
+
+.unit {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
+
+.emoji { font-size: 1.8rem; margin-left: 4px; }
+
+.summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.divider { height: 1px; background: var(--border-subtle); margin-bottom: 16px; }
+
+.observed {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.observedItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.observedValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Dot for badge */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot_safe   { background: var(--safe);   animation: pulse-ring-safe   2s ease-in-out infinite; }
+.dot_medium { background: var(--medium); animation: pulse-ring-medium 2s ease-in-out infinite; }
+.dot_severe { background: var(--severe); animation: pulse-ring-severe 1.5s ease-in-out infinite; }

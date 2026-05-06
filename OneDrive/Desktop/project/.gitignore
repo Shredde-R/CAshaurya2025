@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+.env
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+pip-log.txt
+
+# ML artifacts (large binary files — track with Git LFS if needed)
+# artifacts_lstm/*.pt
+# artifacts_lstm/*.joblib
+# artifacts/*.joblib
+# artifacts/*.npy
+
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.*.local
+!.env.local.example
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Matplotlib cache
+.mplconfig/
+
+# Live data outputs
+live_features/
+eda_outputs/
