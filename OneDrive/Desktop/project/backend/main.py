@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+
 from datetime import timedelta
 from pathlib import Path
 
@@ -57,7 +59,13 @@ METRIC_UNIT_MAP = {
 }
 
 
-app = FastAPI(title="Coastal Sentinel API", version="1.0.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    load_assets(app)
+    yield
+
+
+app = FastAPI(title="Coastal Sentinel API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -199,8 +207,7 @@ def build_forecast_summary(forecast_points: list[dict[str, object]]) -> dict[str
     }
 
 
-@app.on_event("startup")
-def load_assets() -> None:
+def load_assets(app: FastAPI) -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     scaler_state = joblib.load(SCALER_PATH)
     with open(SUMMARY_PATH, "r", encoding="utf-8") as file:
@@ -208,11 +215,11 @@ def load_assets() -> None:
     feature_columns = model_summary.get("input_features_for_sequence_model", DEFAULT_FEATURE_COLUMNS)
 
     reg_model = LSTMRegressor(input_size=len(feature_columns)).to(device)
-    reg_model.load_state_dict(torch.load(REGRESSION_MODEL_PATH, map_location=device))
+    reg_model.load_state_dict(torch.load(REGRESSION_MODEL_PATH, map_location=device, weights_only=False))
     reg_model.eval()
 
     cls_model = LSTMClassifier(input_size=len(feature_columns)).to(device)
-    cls_model.load_state_dict(torch.load(CLASSIFIER_MODEL_PATH, map_location=device))
+    cls_model.load_state_dict(torch.load(CLASSIFIER_MODEL_PATH, map_location=device, weights_only=False))
     cls_model.eval()
 
     app.state.device = device
