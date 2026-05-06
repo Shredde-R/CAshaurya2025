@@ -1,0 +1,37 @@
+{
+  "framework": "pytorch",
+  "device": "cpu",
+  "sequence_length": 24,
+  "regression_metrics": {
+    "mae": 0.029406020417809486,
+    "rmse": 0.051313262432813644,
+    "r2": 0.9924982154129308
+  },
+  "severity_metrics_from_regression": {
+    "accuracy": 0.9687902431633967,
+    "f1_macro": 0.9654227837658728,
+    "f1_weighted": 0.9688610426503377
+  },
+  "classification_metrics": {
+    "accuracy": 0.9606469206878266,
+    "f1_macro": 0.9559040305118837,
+    "f1_weighted": 0.9606586892958338
+  },
+  "saved_models": {
+    "lstm_regression": "C:\\Users\\ASUS\\OneDrive\\Desktop\\project\\artifacts_lstm\\best_lstm_regression.pt",
+    "lstm_classifier": "C:\\Users\\ASUS\\OneDrive\\Desktop\\project\\artifacts_lstm\\best_lstm_classifier.pt",
+    "sequence_scaler": "C:\\Users\\ASUS\\OneDrive\\Desktop\\project\\artifacts_lstm\\lstm_sequence_scaler.joblib"
+  },
+  "input_features_for_sequence_model": [
+    "Water_Level",
+    "Wind_Speed",
+    "Pressure",
+    "Air_Temp",
+    "hour_sin",
+    "hour_cos",
+    "dayofyear_sin",
+    "dayofyear_cos",
+    "day_of_week",
+    "month"
+  ]
+}

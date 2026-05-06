@@ -1,0 +1,15 @@
+{
+  "best_regression_model": "linear_regression",
+  "best_classification_model": "gradient_boosting_classifier",
+  "best_regression_validation_rmse": 2.6271387870170995e-16,
+  "best_classification_validation_f1_weighted": 1.0,
+  "severity_metrics_from_best_regression": {
+    "accuracy": 0.9992389649923896,
+    "f1_weighted": 0.9992384707405201,
+    "f1_macro": 0.9992274191285005
+  },
+  "severity_thresholds": {
+    "safe_threshold": 0.5,
+    "severe_threshold": 1.0
+  }
+}
